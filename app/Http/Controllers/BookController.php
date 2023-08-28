@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 
 class BookController extends Controller
 {
@@ -15,7 +16,9 @@ class BookController extends Controller
     public function index()
     {
         //
-        $books = Book::all();
+        // $books = Book::all();
+        // return view('books.index', compact('books'))->with('i', (request()->input('page',1 )-1)*5);
+        $books = Book::paginate(5);
         return view('books.index', compact('books'))->with('i', (request()->input('page',1 )-1)*5);
     }
 
@@ -61,7 +64,7 @@ class BookController extends Controller
     public function show(Book $book)
     {
         //
-        return view('books.show', compact($book));
+        return view('books.show',compact('book'));
     }
 
     /**
@@ -73,7 +76,7 @@ class BookController extends Controller
     public function edit(Book $book)
     {
         //
-        return view('books.edit', compact($book));
+        return view('books.edit', compact('book'));
     }
 
     /**
