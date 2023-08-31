@@ -34,9 +34,9 @@
 	        <td>{{ $book->name }}</td>
 	        <td>{{ $book->detail }}</td>
 	        <td>
-                <form action="{{ route('books.destroy',$book->id) }}" method="POST">
-                    <a class="btn btn-info" href="{{ route('books.show',$book->id) }}">Show</a>
-                    <a class="btn btn-primary" href="{{ route('books.edit',$book->id) }}">Edit</a>
+                <form action="{{ route('books.destroy', $book->id) }}" method="POST">
+                    <a class="btn btn-info" href="{{ route('books.show', $book->id) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ route('books.edit', $book->id) }}">Edit</a>
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Delete</button>
